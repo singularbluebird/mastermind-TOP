@@ -4,7 +4,7 @@ class CodeMaker
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
   attr_accessor :name, :code, :feedback
 
-  def init(name='p1')
+  def init(name='maker')
     @name = name
   end
 
