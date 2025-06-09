@@ -1,5 +1,5 @@
 class Player
-  :name, :p_pos, :n_pos
+  attr_accessor :name, :p_pos, :n_pos
 
  def init(nam)
    @name = nam
