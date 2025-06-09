@@ -1,4 +1,4 @@
-class CodeBreaker
+class CodeBreaker < Player
   attr_accessor :name, :guess, :possible_guesses, :move_counter
 
   def init(name='breaker')
