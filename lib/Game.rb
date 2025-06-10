@@ -2,7 +2,7 @@ require_relative 'CodeMaker'
 require_relative 'CodeBreaker'
 
 class Game
-  include PossbileColours
+  include PossibleColours
 
   attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player, :move_counter
 
