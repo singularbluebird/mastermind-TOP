@@ -7,7 +7,7 @@ class Game
   def initialize(maker, breaker)
 
     @p_maker, @p_breaker = CodeMaker.new(maker), CodeBreaker.new(breaker)
-    @positions = [Array.new(4, "#") + Array.new(4, "*")]*12
+    @positions = Array.new(12) { Array.new(4) { "#" } + Array.new(4) { "*" } }
     @board = draw_game(8, @positions)
     @previous_player = @p_maker
     @next_player = @p_breaker
