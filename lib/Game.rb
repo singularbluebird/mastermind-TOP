@@ -2,6 +2,8 @@ require_relative 'CodeMaker'
 require_relative 'CodeBreaker'
 
 class Game
+  include PossbileColours
+
   attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player, :move_counter
 
   def initialize(maker, breaker)
@@ -41,15 +43,9 @@ class Game
   end
 
   def did_anyone_win?
-    has_anyone_won = false
+    has_anyone_won = self.move_counter == 6.0 || p_breaker.guess == p_maker.code ? true : false
 
-    if self.move_counter == 6.0
-      #This means the code maker won, as the code breaker wasn't able to break the code
-    elsif p_breaker.guess == p_maker.code
-      #This means that the code breaker won, as he found thee correct code
-    else
-      #The game keeps going, nobody has won yet
-    end
+    return has_anyone_won
   end
   # Method for drawing top part of piece
   def draw_top_part(num)
