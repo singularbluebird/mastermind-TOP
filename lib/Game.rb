@@ -28,7 +28,14 @@ class Game
 
     @next_player.make_move
     self.update_positions
-    draw_game(8, self.positions) 
+
+    if self.did_anyone_win?
+      puts "Congratulations #{@next_player} is the winner, better luck next time #{@previous_player}"
+      self.draw_game(8, @positions)
+    else
+      self.swap_players
+      self.draw_board(8, @positions)
+    end
   end
 
   def update_positions
@@ -46,6 +53,11 @@ class Game
     has_anyone_won = self.move_counter == 6.0 || p_breaker.guess == p_maker.code ? true : false
 
     return has_anyone_won
+  end
+
+  def swap_players
+    @next_player = self.next_player == p_maker ? p_breaker : p_maker
+    @previous_player = self.previous_player == p_breaker ? p_maker : p_breaker
   end
   # Method for drawing top part of piece
   def draw_top_part(num)
