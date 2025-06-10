@@ -94,9 +94,9 @@ class Game
   def update_board(move)
    if @next_plaer == @p_breaker
      @board[@next_player.move_counter][] 
+   end
   end
 end
-
 # Ok this would all make more sense if the shape of the board was like this [[], []] where 
 # the first one is for the breaker and the next one is for the maker. You can work on that
 # next time.
