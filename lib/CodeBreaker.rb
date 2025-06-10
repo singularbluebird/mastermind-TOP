@@ -1,15 +1,13 @@
 require_relative 'Player'
 class CodeBreaker < Player
-  attr_accessor :name, :guess, :possible_guesses, :move_counter
+  attr_accessor :name, :guess, :possible_guesses
 
   def init(name='breaker')
     @name = name
-    @move_counter = 0
   end
 
   def make_move()
     @guess = gets.chomp.split('')
-    @move_counter +=1
   end
 
   def make_optimal_guess()

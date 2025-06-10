@@ -3,12 +3,11 @@ class CodeMaker < Player
   @possible_code_colours = 'RGBYOP'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
-  attr_accessor :name, :code, :feedback, :move_counter
+  attr_accessor :name, :code, :feedback
 
   def init(name='maker')
     @name = name
     @code = []
-    @move_counter = 0
   end
 
   #User must input a string containing 4 initials (All caps) from the available colours 
@@ -52,7 +51,6 @@ class CodeMaker < Player
       end
     end
 
-    @move_counter += 1
     @feedback = ans.length > 1 ? ans : ans[0]
   end
 end
