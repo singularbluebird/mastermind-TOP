@@ -1,4 +1,5 @@
 require_relative 'Player'
+
 class CodeMaker < Player
   @possible_code_colours = 'RGBYOP'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.

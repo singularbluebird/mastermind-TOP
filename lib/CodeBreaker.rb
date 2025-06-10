@@ -1,4 +1,5 @@
 require_relative 'Player'
+
 class CodeBreaker < Player
   attr_accessor :name, :guess, :possible_guesses
 
