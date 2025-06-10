@@ -2,7 +2,7 @@ require_relative 'CodeMaker'
 require_relative 'CodeBreaker'
 
 class Game
-  attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player
+  attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player, :move_counter
 
   def initialize(maker, breaker)
 
@@ -11,7 +11,7 @@ class Game
     @board = draw_game(8, @positions)
     @previous_player = @p_maker
     @next_player = @p_breaker
-    
+    @move_counter = 0 
     puts """Welcome to Mastermind. In this game, there is a code guesser and a code breaker.
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
 
