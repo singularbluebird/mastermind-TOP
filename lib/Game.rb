@@ -38,7 +38,7 @@ class Game
   end
 
   def update_positions
-    if @next_player is CodeBreaker
+    if @next_player.instance_of? CodeBreaker
       self.positions[self.move_counter.floor].delete("#")
       @next_player.guess.reverse.each { |g| self.positions.unshift(self.possible_guess_colours[g]) }
     else
