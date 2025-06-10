@@ -17,7 +17,6 @@ class Game
     puts """Welcome to Mastermind. In this game, there is a code guesser and a code breaker.
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
 
-    self.draw_b
     
     @p_maker.make_code_rand
   end
@@ -41,10 +40,10 @@ class Game
   def update_positions
     if @next_player is CodeBreaker
       self.positions[self.move_counter.floor].delete("#")
-      @next_player.guess.reverse.each { |g| self.positions.unshift(e) }
+      @next_player.guess.reverse.each { |g| self.positions.unshift(self.possible_guess_colours[g]) }
     else
       self.positions[self.move_counter.floor].delete("*")
-      @next_player.feedback.reverse.each { |f| self.positions.unshift(f) }
+      @next_player.feedback.reverse.each { |f| self.positions.unshift(self.possible_make_colours[f]) }
     end
     @move_counter += 0.5
   end
