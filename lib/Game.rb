@@ -27,7 +27,8 @@ class Game
     @next_plaer.make_move
 
     # Update board with the new move (be it a guess or feedback)
-    @board[@next_player.move_counter][]
+    @board[self.move_counter][]
+    @move_counter += 1
   end
 
   # Method for drawing top part of piece
