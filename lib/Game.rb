@@ -40,6 +40,17 @@ class Game
     @move_counter += 0.5
   end
 
+  def did_anyone_win?
+    has_anyone_won = false
+
+    if self.move_counter == 6.0
+      #This means the code maker won, as the code breaker wasn't able to break the code
+    elsif p_breaker.guess == p_maker.code
+      #This means that the code breaker won, as he found thee correct code
+    else
+      #The game keeps going, nobody has won yet
+    end
+  end
   # Method for drawing top part of piece
   def draw_top_part(num)
     str = "\t\t\t"
