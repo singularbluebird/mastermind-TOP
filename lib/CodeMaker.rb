@@ -49,6 +49,8 @@ class CodeMaker < Player
         else
           ans << 'W'
         end
+      else
+        ans << '*'
       end
     end
 
