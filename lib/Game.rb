@@ -11,7 +11,7 @@ class Game
     @board = draw_game(8, @positions)
     @previous_player = @p_maker
     @next_player = @p_breaker
-    @move_counter = 0 
+    @move_counter = 0.0
     puts """Welcome to Mastermind. In this game, there is a code guesser and a code breaker.
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
 
@@ -26,9 +26,17 @@ class Game
 
     @next_plaer.make_move
 
-    # Update board with the new move (be it a guess or feedback)
-    @board[self.move_counter][]
-    @move_counter += 1
+    # Update positions with the new move (be it a guess or feedback)
+    if @next_player is CodeBreaker
+      self.positions[self.move_counter.floor].delete("#")
+      @next_player.guess.reverse.each { |g| self.positions.unshift(e) }
+    else
+      self.positions[self.move_counter.floor].delete("*")
+      @next_player.feedback.reverse.each { |f| self.positions.unshift(f) }
+    end
+    @move_counter += 0.5
+
+    draw_game(8, self.positions) 
   end
 
   # Method for drawing top part of piece
