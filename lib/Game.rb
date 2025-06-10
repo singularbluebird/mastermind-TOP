@@ -24,9 +24,12 @@ class Game
   def make_move()
     puts "#{@next_player.name} it is now your turn."
 
-    @next_plaer.make_move
+    @next_player.make_move
+    self.update_positions
+    draw_game(8, self.positions) 
+  end
 
-    # Update positions with the new move (be it a guess or feedback)
+  def update_positions
     if @next_player is CodeBreaker
       self.positions[self.move_counter.floor].delete("#")
       @next_player.guess.reverse.each { |g| self.positions.unshift(e) }
@@ -35,8 +38,6 @@ class Game
       @next_player.feedback.reverse.each { |f| self.positions.unshift(f) }
     end
     @move_counter += 0.5
-
-    draw_game(8, self.positions) 
   end
 
   # Method for drawing top part of piece
@@ -93,18 +94,7 @@ class Game
 
     return str
   end
-  # Drawing the board (again)
-  def draw_b()
-    puts @board
-  end
 
-
-  # Updates the board
-  def update_board(move)
-   if @next_plaer == @p_breaker
-     @board[@next_player.move_counter][] 
-   end
-  end
 end
 # Ok this would all make more sense if the shape of the board was like this [[], []] where 
 # the first one is for the breaker and the next one is for the maker. You can work on that
