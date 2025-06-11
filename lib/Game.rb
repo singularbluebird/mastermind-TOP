@@ -7,9 +7,9 @@ class Game
 
   attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player, :move_counter
 
-  def initialize(maker, breaker)
+  def initialize
 
-    @p_maker, @p_breaker = CodeMaker.new(maker), CodeBreaker.new(breaker)
+    @p_maker, @p_breaker = CodeMaker.new, CodeBreaker.new
     @positions = Array.new(12) { Array.new(4) { "#" } + Array.new(4) { "*" } }
     @board = draw_game(8, @positions)
     @previous_player = @p_maker
