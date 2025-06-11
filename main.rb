@@ -4,4 +4,6 @@ require_relative 'lib/CodeBreaker'
 
 g = Game.new
 
-g.make_move
+while !g.did_anyone_win?
+  g.make_move
+end
