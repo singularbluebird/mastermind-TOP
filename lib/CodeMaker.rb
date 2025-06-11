@@ -54,6 +54,6 @@ class CodeMaker < Player
       end
     end
 
-    @feedback = ans.length > 1 ? ans : ans[0]
+    @feedback = ans.shuffle
   end
 end
