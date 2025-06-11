@@ -54,7 +54,7 @@ class Game
       @next_player.guess.reverse.each { |g| self.positions[self.move_counter.floor].unshift(@possible_guess_colours[g]) }
     else
       self.positions[self.move_counter.floor].delete("*")
-      @next_player.feedback.reverse.each { |f| self.positions[self.move_counter.floor].unshift(@possible_make_colours[f]) }
+      @next_player.feedback.reverse.each { |f| self.positions[self.move_counter.floor].push(@possible_make_colours[f]) }
     end
     @move_counter += 0.5
   end
