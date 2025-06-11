@@ -1,5 +1,6 @@
 require_relative 'CodeMaker'
 require_relative 'CodeBreaker'
+require_relative 'PossibleColours'
 
 class Game
   include PossibleColours
