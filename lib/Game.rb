@@ -14,7 +14,7 @@ class Game
     @previous_player = @p_maker
     @next_player = @p_breaker
     @move_counter = 0.0
-    @possible_make_colours = {'B'=> 9675.chr(Encoding::UTF_8), 'W'=> 9679.chr(Encoding::UTF_8)}
+    @possible_make_colours = {'B'=> 9675.chr(Encoding::UTF_8), 'W'=> 9679.chr(Encoding::UTF_8), '*'=> '*'}
     @possible_guess_colours = {'R'=> 9679.chr(Encoding::UTF_8).colorize(:red), 'G'=> 9679.chr(Encoding::UTF_8).colorize(:green), 'B'=> 9679.chr(Encoding::UTF_8).colorize(:blue), 'Y'=> 9679.chr(Encoding::UTF_8).colorize(:yellow), 'O'=> 9679.chr(Encoding::UTF_8).colorize(:orange), 'P'=>9679.chr(Encoding::UTF_8).colorize(:pink) }
     puts """Welcome to Mastermind. In this game, there is a code guesser and a code breaker.
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
@@ -54,7 +54,8 @@ class Game
       @next_player.guess.reverse.each { |g| self.positions[self.move_counter.floor].unshift(@possible_guess_colours[g]) }
     else
       self.positions[self.move_counter.floor].delete("*")
-      @next_player.feedback.reverse.each { |f| self.positions[self.move_counter.floor].push(@possible_make_colours[f]) }
+      @next_player.feedback.each { |f| self.positions[self.move_counter.floor].push(@possible_make_colours[f]) }
+      puts @next_player.feedback
     end
     @move_counter += 0.5
   end
