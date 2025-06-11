@@ -1,7 +1,7 @@
 require_relative 'Player'
 
 class CodeMaker < Player
-  @possible_code_colours = 'RGBYOP'.split('')
+  POSSIBLE_CODE_COLOURS = 'RGBYOP'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
   attr_accessor :name, :code, :feedback
@@ -15,7 +15,7 @@ class CodeMaker < Player
   def make_code()
     user_input = gets.chomp.split('')
     
-    while (user_input & @possible_code_colours) != user_input && user_input.length == 4
+    while (user_input & POSSIBLE_CODE_COLOURS) != user_input && user_input.length == 4
       puts 'Invalid code, please try again'
       user_input = gets.chomp.split('')
     end
@@ -25,7 +25,7 @@ class CodeMaker < Player
 
   #Called by computer to generate a random code
   def make_code_rand()
-    @code = @possible_code_colours.sample(4)    
+    @code = POSSIBLE_CODE_COLOURS.sample(4)    
   end
 
   #Way for the user to give feedback. The user must use 'W' for 'B' for white and black pegs respectively
