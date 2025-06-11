@@ -19,6 +19,7 @@ class Game
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
 
     
+    puts @board
     @p_maker.make_code_rand
   end
 
@@ -31,10 +32,12 @@ class Game
 
     if self.did_anyone_win?
       puts "Congratulations #{@next_player} is the winner, better luck next time #{@previous_player}"
-      self.draw_game(8, @positions)
+      @board = draw_game(8, @positions)
+      puts @board
     else
       self.swap_players
-      self.draw_board(8, @positions)
+      @board = draw_game(8, @positions)
+      puts @board
     end
   end
 
