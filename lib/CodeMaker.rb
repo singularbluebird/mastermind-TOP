@@ -52,6 +52,7 @@ class CodeMaker < Player
       else
         ans << '*'
       end
+      arr.shift
     end
 
     @feedback = ans.shuffle
