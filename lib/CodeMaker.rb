@@ -2,7 +2,7 @@ require_relative 'Player'
 require 'pry-byebug'
 
 class CodeMaker < Player
-  POSSIBLE_CODE_COLOURS = 'RGBYOP'.split('')
+  POSSIBLE_CODE_COLOURS = 'RGBYMC'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
   attr_accessor :name, :code, :feedback

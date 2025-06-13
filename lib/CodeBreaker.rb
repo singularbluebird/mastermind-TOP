@@ -19,11 +19,11 @@ class CodeBreaker < Player
 
 # Method to change from number strings to plays
   def make_play()
-    dict = {'0' => 'R', '1' => 'G', '2' => 'B', '3' => 'Y', '4' => 'O', 5 => 'P'} 
+    dict = {'0' => 'R', '1' => 'G', '2' => 'B', '3' => 'Y', '4' => 'M', 5 => 'C'} 
     arr = []
 
     (0..1295).each do |num|
-      arr << change_base(num, 6, 4).tr('012345', 'RGBYOP')
+      arr << change_base(num, 6, 4).tr('012345', 'RGBYMC')
     end
     @possible_guesses = arr
   end

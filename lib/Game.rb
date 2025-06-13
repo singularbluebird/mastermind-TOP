@@ -1,9 +1,13 @@
 require_relative 'CodeMaker'
 require_relative 'CodeBreaker'
 require_relative 'PossibleColours'
-require 'colorize'
+require 'rainbow/refinement'
+
+using Rainbow
 
 class Game
+
+using Rainbow
   attr_accessor :board, :positions, :p_maker, :p_breaker, :previous_player, :next_player, :move_counter, :possible_make_colours, :possible_guess_colours
 
   def initialize
@@ -15,7 +19,7 @@ class Game
     @next_player = @p_breaker
     @move_counter = 0.0
     @possible_make_colours = {'B'=> 9675.chr(Encoding::UTF_8), 'W'=> 9679.chr(Encoding::UTF_8), '*'=> '*'}
-    @possible_guess_colours = {'R'=> 9679.chr(Encoding::UTF_8).colorize(:red), 'G'=> 9679.chr(Encoding::UTF_8).colorize(:green), 'B'=> 9679.chr(Encoding::UTF_8).colorize(:blue), 'Y'=> 9679.chr(Encoding::UTF_8).colorize(:yellow), 'O'=> 9679.chr(Encoding::UTF_8).colorize(:orange), 'P'=>9679.chr(Encoding::UTF_8).colorize(:pink) }
+    @possible_guess_colours = {'R'=> 9679.chr(Encoding::UTF_8).red, 'G'=> 9679.chr(Encoding::UTF_8).green, 'B'=> 9679.chr(Encoding::UTF_8).blue, 'Y'=> 9679.chr(Encoding::UTF_8).yellow, 'M'=> 9679.chr(Encoding::UTF_8).magenta, 'C'=>9679.chr(Encoding::UTF_8).cyan }
     puts """Welcome to Mastermind. In this game, there is a code guesser and a code breaker.
     In here you'll play as the code breaker. The computer will pick a code of 4 possible colours and you have to guess it correctly. You get 12 guesses total. Each guess will appear in a row with the \"*\" on them and the feedback for that specific guess will be displayed besides it where the \"#\" is displayed."""
 
