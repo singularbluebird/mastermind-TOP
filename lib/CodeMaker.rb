@@ -1,4 +1,5 @@
 require_relative 'Player'
+require 'pry-byebug'
 
 class CodeMaker < Player
   POSSIBLE_CODE_COLOURS = 'RGBYOP'.split('')
@@ -41,20 +42,22 @@ class CodeMaker < Player
 
   def make_move(guess_arr)
     ans = []
-    arr = @code
-    guess_arr.each_index do |i|
-      if guess_arr[i] in arr
-        if guess_arr[i] == @code[i]
-          ans << 'B'
-        else
-          ans << 'W'
-        end
-      else
-        ans << '*'
-      end
-      arr.shift
-    end
+    arr = guess_arr.dup
 
+
+    i = 0
+    until arr.empty?
+      if arr[0] == self.code[i]
+        ans << "B"
+      elsif self.code.include?(arr[0])
+        ans << "W"
+      else
+        ans << "*"
+      end
+
+      arr.shift
+      i += 1
+    end
     @feedback = ans.shuffle
   end
 end
