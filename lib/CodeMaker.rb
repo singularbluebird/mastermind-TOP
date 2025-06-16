@@ -12,8 +12,11 @@ class CodeMaker < Player
     @code = []
   end
 
+  def make_code(c=true)
+    @code = c ? self.make_code_rand : self.make_code_human 
+  end
   #User must input a string containing 4 initials (All caps) from the available colours 
-  def make_code()
+  def make_code_human()
     user_input = gets.chomp.split('')
     
     while (user_input & POSSIBLE_CODE_COLOURS) != user_input && user_input.length == 4
@@ -21,12 +24,12 @@ class CodeMaker < Player
       user_input = gets.chomp.split('')
     end
     
-    @code = user_input
+    user_input
   end
 
   #Called by computer to generate a random code
   def make_code_rand()
-    @code = POSSIBLE_CODE_COLOURS.sample(4)    
+    POSSIBLE_CODE_COLOURS.sample(4)    
   end
 
   #Way for the user to give feedback. The user must use 'W' for 'B' for white and black pegs respectively
