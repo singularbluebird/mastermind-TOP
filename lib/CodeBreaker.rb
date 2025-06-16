@@ -3,8 +3,8 @@ require_relative 'Player'
 class CodeBreaker < Player
   attr_accessor :name, :guess, :possible_guesses
 
-  def init(name='breaker')
-    @name = name
+  def init(name='breaker', c=false)
+    super(name, c)
   end
 
   def make_move()

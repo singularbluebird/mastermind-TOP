@@ -7,8 +7,8 @@ class CodeMaker < Player
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
   attr_accessor :name, :code, :feedback
 
-  def init(name='maker')
-    @name = name
+  def init(name='maker', c=true)
+    super(name, c)
     @code = []
   end
 
