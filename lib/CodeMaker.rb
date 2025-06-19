@@ -2,7 +2,6 @@ require_relative 'Player'
 require 'pry-byebug'
 
 class CodeMaker < Player
-  POSSIBLE_CODE_NUMBERS = (1..6)
   POSSIBLE_CODE_COLOURS = 'RGBYMC'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
@@ -50,9 +49,8 @@ class CodeMaker < Player
     arr = [] 
     
     guess_arr.each_index { |i| black_pegs += 1 if guess_arr[i] == self.code[i] }
-    self.POSSIBLE_CODEnUMBERS.each { |n| arr << [self.code.count(n), guess_arr.count(n)].min }
-    
+    (0..5).each { |n| arr << [self.code.count(POSSIBLE_CODE_COLOURS[n]), guess_arr.count(POSSIBLE_CODE_COLOURS[n])].min }
     white_pegs = arr.sum - black_pegs
-    self.feedback = ('B' * black_pegs + 'W' * white_pegs).split('')
+    self.feedback = ('B' * black_pegs + 'W' * white_pegs + '*' * (4 - arr.sum)).split('')
   end
 end
