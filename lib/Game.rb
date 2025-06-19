@@ -25,7 +25,7 @@ using Rainbow
 
     
     puts @board
-    @p_maker.make_code_rand
+    @p_maker.make_code
   end
 
   # Method to make a move when possible and advance the game
