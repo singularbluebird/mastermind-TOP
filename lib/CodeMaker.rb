@@ -2,6 +2,7 @@ require_relative 'Player'
 require 'pry-byebug'
 
 class CodeMaker < Player
+  POSSIBLE_CODE_NUMBERS = (1..6)
   POSSIBLE_CODE_COLOURS = 'RGBYMC'.split('')
   # Leave the line below like it is for now. When you make the Game file include it in but for now just use 'W' and 'B' for feedback from this class.
   @possible_feedback_colours = [9675.chr(Encoding::UTF_8), 9679.chr(Encoding::UTF_8)]
@@ -44,23 +45,14 @@ class CodeMaker < Player
   end
 
   def make_move(guess_arr)
-    ans = []
-    arr = guess_arr.dup
-
-
-    i = 0
-    until arr.empty?
-      if arr[0] == self.code[i]
-        ans << "B"
-      elsif self.code.include?(arr[0])
-        ans << "W"
-      else
-        ans << "*"
-      end
-
-      arr.shift
-      i += 1
-    end
-    @feedback = ans.shuffle
+    black_pegs = 0
+    white_pegs = 0
+    arr = [] 
+    
+    guess_arr.each_index { |i| black_pegs += 1 if guess_arr[i] == self.code[i] }
+    self.POSSIBLE_CODEnUMBERS.each { |n| arr << [self.code.count(n), guess_arr.count(n)].min }
+    
+    white_pegs = arr.sum - black_pegs
+    self.feedback = ('B' * black_pegs + 'W' * white_pegs).split('')
   end
 end
